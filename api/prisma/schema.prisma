@@ -38,15 +38,15 @@ model ResultadoMensal {
   mesReferencia     DateTime @map("mes_referencia")
 
   numeroProjetos    Int      @map("numero_projetos")
-  faturamento       Decimal  @map("faturamento") @db.Decimal(15, 2)
+  faturamento       Decimal  @map("faturamento")        @db.Decimal(15, 2)
   numeroMembros     Int      @map("numero_membros")
-  csat              Decimal  @map("csat") @db.Decimal(5, 2)
-  engajamentoMej    Decimal  @map("engajamento_mej") @db.Decimal(5, 2)
+  csat              Decimal  @map("csat")               @db.Decimal(5, 2)
+  engajamentoMej    Decimal  @map("engajamento_mej")    @db.Decimal(5, 2)
   fatorColaborativo Decimal  @map("fator_colaborativo") @db.Decimal(5, 2)
   indiceCluster     Int      @map("indice_cluster")
 
   empresaId         String   @map("empresa_id")
-  empresa           User    @relation(fields: [empresaId], references: [id])
+  empresa           User     @relation(fields: [empresaId], references: [id])
 
   createdAt         DateTime @default(now()) @map("created_at")
 
