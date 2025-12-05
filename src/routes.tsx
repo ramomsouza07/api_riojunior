@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
-// import Login from './pages/Login'
-import Registro from './pages/Registro'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Pesquisa from './pages/Pesquisa'
+import User from './pages/User'
 // import Erro from './pages/Erro'
 
 function RoutesApp() {
@@ -9,7 +11,10 @@ function RoutesApp() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={ <Home/> } />
-                <Route path="/registrar" element={ <Registro /> } />
+                <Route path="/login" element={ <Login/> } />
+                <Route path="/registro" element={ <Register /> } />
+                <Route path='/pesquisa' element={ <Pesquisa /> } />
+                <Route path='/usuario/:id' element={ <User /> } />
                 
             </Routes>
         </BrowserRouter>
@@ -18,9 +23,4 @@ function RoutesApp() {
 
 export default RoutesApp
 
-
-/*
-    <Route path="/login" element={ <Login/> } />
-
-    <Route path="*" element={ <Erro/> } />
-*/
+// <Route path="*" element={ <Erro/> } />
