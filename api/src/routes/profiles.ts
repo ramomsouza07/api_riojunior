@@ -12,6 +12,7 @@ export const profileRoutes: FastifyPluginAsyncZod = async (app) => {
           200: z.object({
             id: z.string().uuid(),
             nome: z.string(),
+            local: z.string(),
             email: z.string(),
             federada: z.boolean(),
             createdAt: z.date(),

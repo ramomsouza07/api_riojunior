@@ -18,6 +18,7 @@ async function main() {
         update: { role: Role.ADMIN },
         create: {
         nome: "Mestre Admin",
+        local: "Cidade ADM",
         email: "admin@app.com",
         password: "admin123",
         role: Role.ADMIN,
@@ -31,6 +32,7 @@ async function main() {
         update: {},
         create: {
         nome: "Friburgo Jr",
+        local: "Friburgo",
         email: "frijr@ej.com",
         password: "user123",
         role: Role.USER,

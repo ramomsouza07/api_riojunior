@@ -22,6 +22,7 @@ model User {
   id        String   @id @default(uuid())
   role      Role     @default(USER)
   nome      String
+  local     String
   email     String   @unique
   password  String
   federada  Boolean  @default(true)

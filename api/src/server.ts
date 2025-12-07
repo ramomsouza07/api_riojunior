@@ -23,5 +23,5 @@ app.get("/", () =>{
 })
 
 app.listen({port: 3000}, () => {
-    console.log("Server Running in https://localhost:3000")
+    console.log("Server Running in https://localhost:3333")
 })

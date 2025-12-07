@@ -7,6 +7,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
         schema:{
             body:z.object({
                 nome: z.string().min(5, "Deve possuir pelo menos 5 caracteres!").max(20, "Deve possuir até 20 caracteres!"),
+                local: z.string(),
                 email: z.string().email("Não é um formato de e-mail!"),
                 password: z.string().min(12, "Deve possuir pelo menos 12 caracteres!"),
                 federada: z.boolean()
@@ -15,6 +16,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                 201:z.object({
                     id: z.string().uuid(),
                     nome: z.string(),
+                    local: z.string(),
                     email: z.string(),
                     federada: z.boolean(),
                     createdAt: z.date()
@@ -27,7 +29,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                 })
             }
         }},async (request, reply) => {
-        const {nome, email, password, federada} = request.body
+        const {nome, email, local, password, federada} = request.body
 
         try {
             const existUser = await prisma.user.findUnique({
@@ -43,6 +45,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
             const newUser = await prisma.user.create({
                 data:{
                     nome,
+                    local,
                     email,
                     password,
                     federada
@@ -62,6 +65,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                     z.object({
                         id: z.string().uuid(),
                         nome: z.string().min(5).max(20),
+                        local: z.string(),
                         email: z.string(),
                         federada: z.boolean(),
                         createdAt: z.date()
@@ -92,6 +96,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
             .min(5, "Deve possuir pelo menos 5 caracteres!")
             .max(20, "Deve possuir até 20 caracteres!")
             .optional(),
+          local: z.string(),
           email: z.string().email("Não é um formato de e-mail!").optional(),
           password: z
             .string()
@@ -103,6 +108,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
           200: z.object({
             id: z.string().uuid(),
             nome: z.string(),
+            local: z.string(),
             email: z.string(),
             federada: z.boolean(),
             createdAt: z.date()
@@ -120,7 +126,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
       }
     },async (request, reply) => {
       const { id } = request.params
-      const { nome, email, password, federada } = request.body
+      const { nome, email, local, password, federada } = request.body
 
       try {
         const userExists = await prisma.user.findUnique({
@@ -144,6 +150,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
           where: { id },
           data: {
             nome,
+            local,
             email,
             password,
             federada
