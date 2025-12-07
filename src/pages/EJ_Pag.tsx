@@ -5,7 +5,8 @@ import rio_junior_logo from '@/assets/rio_junior_logo.png'
 import { Button } from '@/components/ui/button'
 import { Link } from "react-router-dom"
 import { ArrowLeftIcon } from 'lucide-react'
-import { PerformanceChart } from '@/components/Grafico'
+import { PerformanceChart } from '@/components/Grafico/Grafico'
+import CardIndicador from '@/components/CardIndicador' 
 
 export default function Ej_Pag(){
     return(
@@ -13,12 +14,14 @@ export default function Ej_Pag(){
             <div className='flex flex-col items-center min-h-screen font-inter'>
                 <Header_Private />
 
-                <main className="flex flex-1 flex-col items-start w-full px-4 md:px-6 py-5 gap-5">
-                    <Button asChild className='bg-verde-claro font-poppins text-white font-semibold text-xl md:text-2xl'>
+                <main className="flex flex-1 flex-col items-start w-full px-0 md:px-6 py-5 
+                lg:gap-20 gap-5">
+                    <Button asChild className='bg-verde-claro hover:bg-[#667d19] 
+                    font-poppins text-white font-semibold text-xl md:text-2xl'>
                         <Link to='/'><ArrowLeftIcon/>Voltar</Link>
                     </Button>
 
-                    <div className=' w-full flex flex-col lg: px-30 lg:flex-row md:gap-5'>
+                    <div className=' w-full flex flex-col px-9 lg:px-30 lg:flex-row md:gap-5'>
                         <div className=' lg:w-1/3 xl:w-1/4'>
                             <div className='bg-card border rounded-lg shadow-sm p-4 md:p-5 h-full'>
                                 <div className='flex flex-col items-center gap-3 md:gap-4 h-full'>
@@ -61,6 +64,15 @@ export default function Ej_Pag(){
                                 <PerformanceChart/>
                             </div>
                         </div>
+                    </div>
+
+                    <div className='w-full grid grid-cols-1 gap-18 sm:grid-cols-2 md:max-w-[87%]
+                    md:grid-cols-4 py-5 md:place-self-center'>
+                        <CardIndicador/>
+                        <CardIndicador/>
+                        <CardIndicador/>
+                        <CardIndicador/>
+
                     </div>
                 </main>
 

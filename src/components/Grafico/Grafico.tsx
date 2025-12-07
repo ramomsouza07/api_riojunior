@@ -18,7 +18,7 @@ export const description = "Um gráfico de indicadores com métricas"
 
 const chartConfig = {
   performance: {
-    label: "Indicador de Performance",
+    label: "Índice de Cluster",
     color: "var(--color-verde-claro)",
   },
 } satisfies ChartConfig
@@ -41,10 +41,10 @@ export function PerformanceChart() {
   }
 
   return (
-    <div className="w-full flex justify-end">
-      <Card className="w-full max-w-[95%] md:max-w-[90%] lg:max-w-[85%] xl:max-w-[80%] ">
+    <div className="w-full flex justify-center lg:justify-end">
+      <Card className="w-full max-w-[95%] md:max-w-full lg:max-w-[85%] xl:max-w-[80%] ">
         <CardHeader className="pb-2 pt-4 px-4">
-          <CardTitle className="text-lg">Indicador de Performance</CardTitle>
+          <CardTitle className="text-lg">Índice de Cluster</CardTitle>
           <CardDescription className="text-xs">Desempenho da empresa nos últimos meses</CardDescription>
         </CardHeader>
         
@@ -53,12 +53,12 @@ export function PerformanceChart() {
             <div className="lg:w-2/5">
               <div className="h-full flex flex-col justify-center space-y-4">
                 <div>
-                  <h3 className="text-sm text-muted-foreground mb-1">Mês Atual</h3>
+                  <h3 className="text-sm text-muted-foreground mb-1">Última Atualização</h3>
                   <p className="text-base font-medium text-foreground">{currentMonth}</p>
                 </div>
                 
                 <div>
-                  <h3 className="text-sm text-muted-foreground mb-1">Índice de Performance</h3>
+                  <h3 className="text-sm text-muted-foreground mb-1">Índice de Cluster</h3>
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-bold text-foreground">{formatValue(currentValue)}</span>
                     <span className="text-xs text-muted-foreground">pontos</span>
@@ -104,7 +104,7 @@ export function PerformanceChart() {
               <div className="mt-2 pt-2 border-t">
                 <div className="flex items-center gap-1 text-xs">
                   <div className="h-2 w-2 rounded-full bg-verde-claro"></div>
-                  <span className="text-muted-foreground">Evolução do Indicador de Performance</span>
+                  <span className="text-muted-foreground">Evolução do Índice de Cluster</span>
                 </div>
               </div>
             </div>
