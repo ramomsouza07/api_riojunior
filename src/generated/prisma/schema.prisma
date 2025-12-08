@@ -27,7 +27,6 @@ model User {
   email     String   @unique
   password  String
   faculdade String
-  curso     String
   federada  Boolean  @default(true)
   createdAt DateTime @default(now()) @map("created_at")
 

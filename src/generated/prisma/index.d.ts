@@ -1001,7 +1001,6 @@ export namespace Prisma {
     email: string | null
     password: string | null
     faculdade: string | null
-    curso: string | null
     federada: boolean | null
     createdAt: Date | null
   }
@@ -1014,7 +1013,6 @@ export namespace Prisma {
     email: string | null
     password: string | null
     faculdade: string | null
-    curso: string | null
     federada: boolean | null
     createdAt: Date | null
   }
@@ -1027,7 +1025,6 @@ export namespace Prisma {
     email: number
     password: number
     faculdade: number
-    curso: number
     federada: number
     createdAt: number
     _all: number
@@ -1042,7 +1039,6 @@ export namespace Prisma {
     email?: true
     password?: true
     faculdade?: true
-    curso?: true
     federada?: true
     createdAt?: true
   }
@@ -1055,7 +1051,6 @@ export namespace Prisma {
     email?: true
     password?: true
     faculdade?: true
-    curso?: true
     federada?: true
     createdAt?: true
   }
@@ -1068,7 +1063,6 @@ export namespace Prisma {
     email?: true
     password?: true
     faculdade?: true
-    curso?: true
     federada?: true
     createdAt?: true
     _all?: true
@@ -1154,7 +1148,6 @@ export namespace Prisma {
     email: string
     password: string
     faculdade: string
-    curso: string
     federada: boolean
     createdAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1184,7 +1177,6 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     faculdade?: boolean
-    curso?: boolean
     federada?: boolean
     createdAt?: boolean
     resultados?: boolean | User$resultadosArgs<ExtArgs>
@@ -1201,12 +1193,11 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     faculdade?: boolean
-    curso?: boolean
     federada?: boolean
     createdAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "nome" | "local" | "email" | "password" | "faculdade" | "curso" | "federada" | "createdAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "role" | "nome" | "local" | "email" | "password" | "faculdade" | "federada" | "createdAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     resultados?: boolean | User$resultadosArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1225,7 +1216,6 @@ export namespace Prisma {
       email: string
       password: string
       faculdade: string
-      curso: string
       federada: boolean
       createdAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1605,7 +1595,6 @@ export namespace Prisma {
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly faculdade: FieldRef<"User", 'String'>
-    readonly curso: FieldRef<"User", 'String'>
     readonly federada: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
   }
@@ -3068,7 +3057,6 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     faculdade: 'faculdade',
-    curso: 'curso',
     federada: 'federada',
     createdAt: 'createdAt'
   };
@@ -3107,8 +3095,7 @@ export namespace Prisma {
     local: 'local',
     email: 'email',
     password: 'password',
-    faculdade: 'faculdade',
-    curso: 'curso'
+    faculdade: 'faculdade'
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
@@ -3190,7 +3177,6 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     faculdade?: StringFilter<"User"> | string
-    curso?: StringFilter<"User"> | string
     federada?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     resultados?: ResultadoMensalListRelationFilter
@@ -3204,7 +3190,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     faculdade?: SortOrder
-    curso?: SortOrder
     federada?: SortOrder
     createdAt?: SortOrder
     resultados?: ResultadoMensalOrderByRelationAggregateInput
@@ -3222,7 +3207,6 @@ export namespace Prisma {
     local?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     faculdade?: StringFilter<"User"> | string
-    curso?: StringFilter<"User"> | string
     federada?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     resultados?: ResultadoMensalListRelationFilter
@@ -3236,7 +3220,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     faculdade?: SortOrder
-    curso?: SortOrder
     federada?: SortOrder
     createdAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -3255,7 +3238,6 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     faculdade?: StringWithAggregatesFilter<"User"> | string
-    curso?: StringWithAggregatesFilter<"User"> | string
     federada?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
   }
@@ -3357,7 +3339,6 @@ export namespace Prisma {
     email: string
     password: string
     faculdade: string
-    curso: string
     federada?: boolean
     createdAt?: Date | string
     resultados?: ResultadoMensalCreateNestedManyWithoutEmpresaInput
@@ -3371,7 +3352,6 @@ export namespace Prisma {
     email: string
     password: string
     faculdade: string
-    curso: string
     federada?: boolean
     createdAt?: Date | string
     resultados?: ResultadoMensalUncheckedCreateNestedManyWithoutEmpresaInput
@@ -3385,7 +3365,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     faculdade?: StringFieldUpdateOperationsInput | string
-    curso?: StringFieldUpdateOperationsInput | string
     federada?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resultados?: ResultadoMensalUpdateManyWithoutEmpresaNestedInput
@@ -3399,7 +3378,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     faculdade?: StringFieldUpdateOperationsInput | string
-    curso?: StringFieldUpdateOperationsInput | string
     federada?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     resultados?: ResultadoMensalUncheckedUpdateManyWithoutEmpresaNestedInput
@@ -3413,7 +3391,6 @@ export namespace Prisma {
     email: string
     password: string
     faculdade: string
-    curso: string
     federada?: boolean
     createdAt?: Date | string
   }
@@ -3426,7 +3403,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     faculdade?: StringFieldUpdateOperationsInput | string
-    curso?: StringFieldUpdateOperationsInput | string
     federada?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3439,7 +3415,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     faculdade?: StringFieldUpdateOperationsInput | string
-    curso?: StringFieldUpdateOperationsInput | string
     federada?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -3603,7 +3578,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     faculdade?: SortOrder
-    curso?: SortOrder
     federada?: SortOrder
     createdAt?: SortOrder
   }
@@ -3616,7 +3590,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     faculdade?: SortOrder
-    curso?: SortOrder
     federada?: SortOrder
     createdAt?: SortOrder
   }
@@ -3629,7 +3602,6 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     faculdade?: SortOrder
-    curso?: SortOrder
     federada?: SortOrder
     createdAt?: SortOrder
   }
@@ -4134,7 +4106,6 @@ export namespace Prisma {
     email: string
     password: string
     faculdade: string
-    curso: string
     federada?: boolean
     createdAt?: Date | string
   }
@@ -4147,7 +4118,6 @@ export namespace Prisma {
     email: string
     password: string
     faculdade: string
-    curso: string
     federada?: boolean
     createdAt?: Date | string
   }
@@ -4176,7 +4146,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     faculdade?: StringFieldUpdateOperationsInput | string
-    curso?: StringFieldUpdateOperationsInput | string
     federada?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -4189,7 +4158,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     faculdade?: StringFieldUpdateOperationsInput | string
-    curso?: StringFieldUpdateOperationsInput | string
     federada?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

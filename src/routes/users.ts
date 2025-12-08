@@ -20,7 +20,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                 email: z.string().email("Não é um formato de e-mail!"),
                 password: z.string().min(12, "Deve possuir pelo menos 12 caracteres!"),
                 faculdade: z.string(),
-                curso: z.string(),
                 federada: z.boolean()
             }),
             response:{
@@ -30,7 +29,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                     local: z.string(),
                     email: z.string(),
                     faculdade: z.string(),
-                    curso: z.string(),
                     federada: z.boolean(),
                     createdAt: z.date()
                 }),
@@ -42,7 +40,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                 })
             }
         }},async (request, reply) => {
-        const {nome, local, email, password, faculdade, curso, federada} = request.body
+        const {nome, local, email, password, faculdade, federada} = request.body
 
         try {
             const existUser = await prisma.user.findUnique({
@@ -64,7 +62,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                     email,
                     password: hashedPassword,
                     faculdade,
-                    curso,
                     federada
                 }
             })
@@ -86,7 +83,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
                         local: z.string(),
                         email: z.string(),
                         faculdade: z.string(),
-                        curso: z.string(),
                         federada: z.boolean(),
                         createdAt: z.date()
                     })
@@ -124,7 +120,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
             .min(12, "Deve possuir pelo menos 12 caracteres!")
             .optional(),
           faculdade: z.string().optional(),
-          curso: z.string().optional(),
           federada: z.boolean().optional()
         }),
         response: {
@@ -134,7 +129,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
             local: z.string(),
             email: z.string(),
             faculdade: z.string(),
-            curso: z.string(),
             federada: z.boolean(),
             createdAt: z.date()
           }),
@@ -151,7 +145,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
       }
     },async (request, reply) => {
       const { id } = request.params
-      const { nome, local, email, password, faculdade, curso, federada } = request.body
+      const { nome, local, email, password, faculdade, federada } = request.body
 
       try {
         const userExists = await prisma.user.findUnique({
@@ -179,7 +173,6 @@ export const createUser: FastifyPluginAsyncZod = async app => {
             email,
             password,
             faculdade,
-            curso,
             federada
           }
         })

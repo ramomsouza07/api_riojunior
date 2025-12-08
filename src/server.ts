@@ -6,6 +6,7 @@ import { indicadoresRoutes } from './routes/indicadores'
 import { rankingRoutes } from "./routes/destaque"
 import { profileRoutes } from './routes/profiles'
 import { login } from "./routes/login"
+import cors from "@fastify/cors"
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -18,6 +19,11 @@ app.register(rankingRoutes)
 app.register(profileRoutes)
 app.register(login)
 
+app.register(cors, {
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+})
+
 app.register(fastifyJwt, {
   secret: "secret"
 })
@@ -26,6 +32,6 @@ app.get("/", () =>{
     return "Hello World"
 })
 
-app.listen({port: 3000}, () => {
-    console.log("Server Running in http://localhost:3000")
+app.listen({port: 3333}, () => {
+    console.log("Server Running in http://localhost:3333")
 })

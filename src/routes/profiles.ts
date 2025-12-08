@@ -24,7 +24,6 @@ export const profileRoutes: FastifyPluginAsyncZod = async (app) => {
             nome: z.string(),
             local: z.string(),
             faculdade: z.string(),
-            curso: z.string(),
             email: z.string(),
             federada: z.boolean(),
             createdAt: z.date(),

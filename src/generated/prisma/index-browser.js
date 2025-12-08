@@ -129,7 +129,6 @@ exports.Prisma.UserScalarFieldEnum = {
   email: 'email',
   password: 'password',
   faculdade: 'faculdade',
-  curso: 'curso',
   federada: 'federada',
   createdAt: 'createdAt'
 };
@@ -159,8 +158,7 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   local: 'local',
   email: 'email',
   password: 'password',
-  faculdade: 'faculdade',
-  curso: 'curso'
+  faculdade: 'faculdade'
 };
 
 exports.Prisma.ResultadoMensalOrderByRelevanceFieldEnum = {

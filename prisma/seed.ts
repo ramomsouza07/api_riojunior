@@ -18,14 +18,13 @@ async function main() {
         where: { email: "admin@app.com" },
         update: { role: Role.ADMIN },
         create: {
-        nome: "Mestre Admin",
-        local: "Cidade ADM",
-        email: "admin@app.com",
-        password: await hashPassword("admin123"),
-        role: Role.ADMIN,
-        faculdade: "-",
-        curso: "-",
-        federada: false
+            nome: "Mestre Admin",
+            local: "Cidade ADM",
+            email: "admin@app.com",
+            password: await hashPassword("admin123"),
+            role: Role.ADMIN,
+            faculdade: "-",
+            federada: false
         }
     })
   console.log(`Admin criado: ${admin.nome}`)
@@ -34,14 +33,13 @@ async function main() {
         where: { email: "frijr@ej.com" },
         update: {},
         create: {
-        nome: "Friburgo Jr",
-        local: "Friburgo",
-        email: "frijr@ej.com",
-        password: await hashPassword("user123"),
-        role: Role.USER,
-        faculdade: "UNF",
-        curso: "Medicina",
-        federada: true
+            nome: "Friburgo Jr",
+            local: "Friburgo",
+            email: "frijr@ej.com",
+            password: await hashPassword("user123"),
+            role: Role.USER,
+            faculdade: "UNF",
+            federada: true
         }
     })
     console.log(`Empresa criada: ${empresaTeste.nome}`)
