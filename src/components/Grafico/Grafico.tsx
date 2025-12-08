@@ -18,27 +18,27 @@ export const description = "Um gráfico de indicadores com métricas"
 
 const chartConfig = {
   performance: {
-    label: "Índice de Cluster",
+    label: "Índice de Cluster: ",
     color: "var(--color-verde-claro)",
   },
 } satisfies ChartConfig
 
-export function PerformanceChart() {
+interface GraficoProps{
+  regua: number
+}
+
+export function PerformanceChart({regua}:GraficoProps) {
   const chartData = [
-    { month: "Janeiro", performance: 186 },
-    { month: "Fevereiro", performance: 305 },
-    { month: "Março", performance: 237 },
-    { month: "Abril", performance: 73 },
-    { month: "Maio", performance: 209 },
-    { month: "Junho", performance: 214 },
+    { month: "Janeiro", performance: 186000 },
+    { month: "Fevereiro", performance: 305000 },
+    { month: "Março", performance: 237000 },
+    { month: "Abril", performance: 73000 },
+    { month: "Maio", performance: 209000 },
+    { month: "Junho", performance: 214000 },
   ]
   
   const currentValue = 214
   const currentMonth = "Junho"
-
-  const formatValue = (value: number) => {
-    return new Intl.NumberFormat('pt-BR').format(value)
-  }
 
   return (
     <div className="w-full flex justify-center lg:justify-end">
@@ -58,10 +58,10 @@ export function PerformanceChart() {
                 </div>
                 
                 <div>
-                  <h3 className="text-sm text-muted-foreground mb-1">Índice de Cluster</h3>
+                  <h3 className="text-sm text-muted-foreground mb-1">Régua de Cluster</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-bold text-foreground">{formatValue(currentValue)}</span>
-                    <span className="text-xs text-muted-foreground">pontos</span>
+                    <span className="text-xs text-muted-foreground">cluster</span>
+                    <span className="text-2xl font-bold text-foreground">{regua}</span>      
                   </div>
                 </div>
                 

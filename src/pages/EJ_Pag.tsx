@@ -8,7 +8,37 @@ import { ArrowLeftIcon } from 'lucide-react'
 import { PerformanceChart } from '@/components/Grafico/Grafico'
 import CardIndicador from '@/components/CardIndicador' 
 
+interface EjData{
+    nomeEmpresa: string
+    universidade: string
+    email: string
+    isFederada: boolean
+    mesReferencia: string
+    faturamento: number
+    numeroProjetos: number
+    numeroMembros: number
+    csat: number
+    engajamento: number
+    colab: number
+    indiceCluster: number
+}
+
 export default function Ej_Pag(){
+    const ejDados: EjData = {
+        nomeEmpresa: "Exemplo",
+        universidade: "Exemplo",
+        email: "email@email.com",
+        isFederada: true,
+        mesReferencia: "Dezembro/2025",
+        faturamento: 25000,
+        numeroProjetos: 18,
+        numeroMembros: 23,
+        csat: 4.7,
+        engajamento: 30,
+        colab: 86,
+        indiceCluster: 3
+    }
+
     return(
         <>
             <div className='flex flex-col items-center min-h-screen font-inter'>
@@ -35,24 +65,28 @@ export default function Ej_Pag(){
                                     
                                     <div className='w-full text-center grow'>
                                         <h1 className='text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-2'>
-                                            Nome da EJ
+                                            {ejDados.nomeEmpresa}
                                         </h1>
                                         
                                         <div className='space-y-2 text-sm'>
                                             <div className='flex flex-col items-center'>
                                                 <span className='font-medium text-muted-foreground text-xs'>Universidade:</span>
-                                                <span className='text-foreground text-sm'>Universidade Exemplo</span>
+                                                <span className='text-foreground text-sm'>{ejDados.universidade}</span>
                                             </div>
                                             
                                             <div className='flex flex-col items-center'>
                                                 <span className='font-medium text-muted-foreground text-xs'>Email:</span>
-                                                <span className='text-foreground text-sm'> email@email.com</span>
+                                                <span className='text-foreground text-sm'>{ejDados.email}</span>
                                             </div>
                                             
                                             <div className='flex flex-col items-center'>
-                                                <span className='font-medium text-muted-foreground text-xs'>Telefone:</span>
-                                                <span className='text-foreground text-sm'>(00) 0000-0000</span>
+                                                <span className='font-medium text-muted-foreground text-xs'>Projetos:</span>
+                                                <span className='text-foreground text-sm'>{ejDados.numeroProjetos}</span>
                                             </div>
+                                            <div className='flex flex-col items-center'>
+                                                <span className='font-medium text-muted-foreground text-xs'>Membros:</span>
+                                                <span className='text-foreground text-sm'>{ejDados.numeroMembros}</span>
+                                            </div>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -61,17 +95,33 @@ export default function Ej_Pag(){
 
                         <div className='flex justify-center lg:w-2/3 xl:w-3/4 mt-4 lg:mt-0 lg:pl-2 '>
                             <div className='w-full h-full'>
-                                <PerformanceChart/>
+                                <PerformanceChart regua={ejDados.indiceCluster}/>
                             </div>
                         </div>
                     </div>
 
                     <div className='w-full grid grid-cols-1 gap-18 sm:grid-cols-2 md:max-w-[87%]
                     md:grid-cols-4 py-5 md:place-self-center'>
-                        <CardIndicador/>
-                        <CardIndicador/>
-                        <CardIndicador/>
-                        <CardIndicador/>
+                        <CardIndicador 
+                        valor={`R$${ejDados.faturamento}`}
+                        titulo='Faturamento'
+                        mes={ejDados.mesReferencia}
+                        />
+                        <CardIndicador 
+                        valor={ejDados.csat}
+                        titulo='CSAT'
+                        mes={ejDados.mesReferencia}
+                        />
+                        <CardIndicador
+                        valor={`${ejDados.engajamento}%`}
+                        titulo='Engajamento'
+                        mes={ejDados.mesReferencia}
+                        />
+                        <CardIndicador
+                        valor={`${ejDados.colab}%`}
+                        titulo='Colab'
+                        mes={ejDados.mesReferencia}
+                        />
 
                     </div>
                 </main>
