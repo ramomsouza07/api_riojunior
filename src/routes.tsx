@@ -3,7 +3,6 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Pesquisa from './pages/Pesquisa'
-import User from './pages/User'
 import Ej_Pag from './pages/EJ_Pag'
 // import Erro from './pages/Erro'
 
@@ -14,8 +13,7 @@ function RoutesApp() {
                 <Route path="/" element={ <Home/> } />
                 <Route path="/login" element={ <Login/> } />
                 <Route path="/registro" element={ <Register /> } />
-                <Route path='/pesquisa' element={ <Pesquisa /> } />
-                <Route path='/usuario/:id' element={ <User /> } />
+                <Route path='/empresas' element={ <Pesquisa /> } />
                 <Route path='/teste' element={ <Ej_Pag/> }/>
                 
             </Routes>
