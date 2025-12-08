@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+model User {
+  id        String   @id @default(uuid())
+  role      Role     @default(USER)
+  nome      String
+  local     String
+  email     String   @unique
+  password  String
+  faculdade String
+  curso     String
+  federada  Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  resultados ResultadoMensal[]
+
+  @@map("users")
+}
+
+model ResultadoMensal {
+  id String @id @default(uuid())
+
+  mesReferencia DateTime @map("mes_referencia")
+
+  numeroProjetos    Int     @map("numero_projetos")
+  faturamento       Decimal @map("faturamento") @db.Decimal(15, 2)
+  numeroMembros     Int     @map("numero_membros")
+  csat              Decimal @map("csat") @db.Decimal(5, 2)
+  engajamentoMej    Decimal @map("engajamento_mej") @db.Decimal(5, 2)
+  fatorColaborativo Decimal @map("fator_colaborativo") @db.Decimal(5, 2)
+  indiceCluster     Int     @map("indice_cluster")
+
+  empresaId String @map("empresa_id")
+  empresa   User   @relation(fields: [empresaId], references: [id])
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([empresaId, mesReferencia])
+  @@map("resultados_mensais")
+}
