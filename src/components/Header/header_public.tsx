@@ -1,11 +1,12 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, } from "@/components/ui/navigation-menu"
 import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popover"
 import logo_rio_jr_branca from '@/assets/logo_rio_jr_branca.png'
+import icone_rio_jr_branco from '@/assets/icone_rio_jr_branco.png'
 import { InfoIcon, FileText } from "lucide-react"
+import { HashLink } from 'react-router-hash-link'
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 import "@/index.css"
-import { HashLink } from 'react-router-hash-link';
 
 const navigationLinks = [
   { to: "/", label: "Home" },
@@ -38,13 +39,13 @@ export function Header_Public() {
                                         {navigationLinks.map((link) => (
                                             <NavigationMenuItem key={link.label} className="w-full">
                                                 <NavigationMenuLink asChild>
-                                                    <HashLink smooth to={link.to} className="flex flex-row items-center px-2 py-1.5 font-medium hover:scale-105 hover:bg-white/10 rounded-md transition-all duration-100">
+                                                    <HashLink smooth to={link.to} className="flex-row items-center block px-2 py-1.5 font-medium hover:scale-105 hover:bg-white/10 rounded-md transition-all duration-100">
                                                         {link.label === "Tutorial" && (
                                                             <InfoIcon className="w-4 h-4 text-white/80" />
                                                         )}{link.label === "Sobre API" && (
                                                             <FileText className="w-4 h-4 text-white/80" />
                                                         )}
-                                                        {link.label}
+                                                        <span>{link.label}</span>
                                                     </HashLink>
                                                 </NavigationMenuLink>
                                             </NavigationMenuItem>
@@ -55,7 +56,8 @@ export function Header_Public() {
                         </Popover>
 
                         <div className="flex items-center gap-6">
-                            <Link to="/"><img src={logo_rio_jr_branca} className="max-h-12 w-auto" /></Link>
+                            <Link to="/" className="hidden md:block"><img src={logo_rio_jr_branca} alt="logo" className="max-h-12 w-auto" /></Link>
+                            <Link to="/" className="block md:hidden"><img src={icone_rio_jr_branco} alt="logo" className="max-h-12 w-auto" /></Link>
                         </div>
 
                         <NavigationMenu className="max-md:hidden">
@@ -63,7 +65,7 @@ export function Header_Public() {
                                 {navigationLinks.map((link) => (
                                     <NavigationMenuItem key={link.label} className="pl-5 relative">
                                         <NavigationMenuLink asChild>
-                                            <HashLink smooth to={link.to} className="flex flex-row items-center block py-1.5 text-sm gap-2 p-2 hover:bg-white/10 rounded-md transition">
+                                            <HashLink smooth to={link.to} className="flex-row items-center block py-1.5 text-sm gap-2 p-2 hover:bg-white/10 rounded-md transition">
                                                 {link.label === "Tutorial" && (
                                                     <InfoIcon className="w-4 h-4 text-white/80" />
                                                 )}
@@ -93,135 +95,3 @@ export function Header_Public() {
         </>
     )
 }
-
-
-
-/*
-
-type DescriptionItem = {
-  to: string,
-  label: string,
-  description: string
-}
-
-type IconItem = {
-  to: string,
-  label: string,
-  icon: "BookOpenIcon" | "LifeBuoyIcon" | "InfoIcon"
-}
-
-type NavigationLink =
-  | {
-      to: string,
-      label: string,
-      submenu?: false
-    }
-  | {
-      label: string,
-      submenu: true,
-      type: "description",
-      items: DescriptionItem[]
-    }
-  | {
-      label: string,
-      submenu: true,
-      type: "icon",
-      items: IconItem[]
-    }
-
-const navigationLinks: NavigationLink[] = [
-  { to: "/", label: "Home" },
-  {
-    label: "Features",
-    submenu: true,
-    type: "description",
-    items: [
-      {
-        to: "/pesquisa",
-        label: "Components",
-        description: "Browse all components in the library.",
-      },
-      {
-        to: "#",
-        label: "Documentation",
-        description: "Learn how to use the library.",
-      },
-      {
-        to: "#",
-        label: "Templates",
-        description: "Pre-built layouts for common use cases.",
-      },
-    ],
-  },
-  {
-    label: "About",
-    submenu: true,
-    type: "icon",
-    items: [
-      { label: "Getting Started", to: "#", icon: "BookOpenIcon" },
-      { label: "Tutorials", to: "#", icon: "LifeBuoyIcon" },
-      { label: "About Us", to: "#", icon: "InfoIcon" }
-    ]
-  }
-]
-
-
-
-<NavigationMenu className="max-md:hidden">
-                            <NavigationMenuList className="gap-2">
-                                {navigationLinks.map((link) => (
-                                    <NavigationMenuItem key={link.label} className="pl-5 relative">
-                                        {!link.submenu ? (
-                                            <NavigationMenuLink asChild>
-                                                <Link to={link.to} className="px-2 py-1.5 font-medium hover:scale-105 hover:bg-white/10 rounded-md transition-all duration-100">{link.label}</Link>
-                                            </NavigationMenuLink>
-                                        ) : (
-                                        <>
-                                            <NavigationMenuTrigger className="bg-transparent px-2 py-1.5 font-medium hover:scale-105 hover:bg-white/10 rounded-md transition-all duration-100">{link.label}</NavigationMenuTrigger>
-                                            <NavigationMenuContent className="absolute p-3 bg-azul-claro rounded-xl z-50">
-                                                <ul className={cn( link.type === "description" ? "min-w-64 space-y-2" : "min-w-48 space-y-1" )} >
-                                                    {link.items.map((item) => (
-                                                        <li key={item.label}>
-                                                            <NavigationMenuLink asChild>
-                                                                <Link to={item.to} className="flex items-start gap-2 p-2 hover:bg-white/10 rounded-md transition">
-
-                                                                    {link.type === "icon" && "icon" in item && (
-                                                                        <div className="flex items-center gap-2">
-                                                                            {item.icon === "BookOpenIcon" && (
-                                                                                <BookOpenIcon aria-hidden="true" className="text-foreground opacity-60" size={16} />
-                                                                            )}
-                                                                            {item.icon === "LifeBuoyIcon" && (
-                                                                                <LifeBuoyIcon aria-hidden="true" className="text-foreground opacity-60" size={16} />
-                                                                            )}
-                                                                            {item.icon === "InfoIcon" && (
-                                                                                <InfoIcon aria-hidden="true" className="text-foreground opacity-60" size={16} />
-                                                                            )}
-                                                                            <span>{item.label}</span>
-                                                                        </div>
-                                                                    )}
-
-                                                                    {link.type === "description" ? (
-                                                                    <div>
-                                                                        <div className="font-medium">{item.label}</div>
-                                                                        <p className="text-xs text-white/70">{item.description}</p>
-                                                                    </div>
-                                                                    ) : (
-                                                                        !link.type ||
-                                                                            (link.type !== "icon" && link.type !== "description" && (
-                                                                                <span>{item.label}</span>
-                                                                                
-                                                                            ))
-                                                                    )}
-                                                                </Link>
-                                                            </NavigationMenuLink>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </NavigationMenuContent>
-                                        </>
-                                        )}
-                                    </NavigationMenuItem>
-                                ))}
-                            </NavigationMenuList>
-                        </NavigationMenu>
-*/

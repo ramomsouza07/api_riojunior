@@ -120,14 +120,15 @@ export default function Ej_Pag() {
       <Header_Private />
 
       <main className="flex flex-1 flex-col items-start w-full px-0 md:px-6 py-5 lg:gap-20 gap-5">
+        <div className='flex gap-5'>
+          <Button asChild className='bg-verde-claro hover:bg-[#667d19] font-poppins text-white font-semibold text-xl md:text-2xl'>
+            <Link to='/empresas'><ArrowLeftIcon/>Voltar</Link>
+          </Button>
 
-        <Button asChild className='bg-verde-claro hover:bg-[#667d19] font-poppins text-white font-semibold text-xl md:text-2xl'>
-          <Link to='/empresas'><ArrowLeftIcon/>Voltar</Link>
-        </Button>
-
-        <Button asChild className='bg-verde-claro hover:bg-[#667d19] font-poppins text-white font-semibold text-xl md:text-2xl'>
-          <Link to='/indicadores/cadastro'><ArrowLeftIcon/>Relatório +</Link>
-        </Button>
+          <Button asChild className='bg-verde-claro hover:bg-[#667d19] font-poppins text-white font-semibold text-xl md:text-2xl'>
+            <Link to='/indicadores/cadastro'>Relatório +</Link>
+          </Button>
+        </div>
 
         <div className='w-full flex flex-col px-9 lg:px-30 lg:flex-row md:gap-5'>
           <div className='lg:w-1/3 xl:w-1/4'>

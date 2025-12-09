@@ -8,6 +8,7 @@ import { CardEJ } from '@/components/CardEJ'
 import '@/index.css'
 
 interface EJprops {
+    id: string,
     nome: string,
     logo: string,
     local: string,
@@ -20,7 +21,6 @@ const API_BASE_URL = import.meta.env.VITE_API_URL
 
 export default function Pesquisa() {
     const [busca, setBusca] = useState("")
-    const [tipo, setTipo] = useState("")
     const [filtro, setFiltro] = useState("")
     const [ejs, setEjs] = useState<EJprops[]>([])
 
@@ -57,14 +57,6 @@ export default function Pesquisa() {
         e.preventDefault()
     }
 
-    function selecionarTipo(tipo: string) {
-        setTipo(tipo)
-    }
-    
-    function Filtrar(tipo: string) {
-        setFiltro(tipo)
-    }
-
     const cidades = [...new Set(ejs.map(ej => ej.local))].filter(Boolean).sort()
 
     const EJsFiltradas = ejs.filter((ej) => {
@@ -73,7 +65,7 @@ export default function Pesquisa() {
 
         let matchFiltro = true
 
-        if (filtro === "todas") {
+        if (filtro === "" || filtro === "todas") {
             matchFiltro = true
         } else if (filtro === "federadas") {
             matchFiltro = ej.federada === true
@@ -127,6 +119,7 @@ export default function Pesquisa() {
                                 EJsFiltradas.map((ej, index) => (
                                     <CardEJ
                                         key={index}
+                                        id={ej.id}
                                         nome={ej.nome}
                                         logo={ej.logo}
                                         local={ej.local}
