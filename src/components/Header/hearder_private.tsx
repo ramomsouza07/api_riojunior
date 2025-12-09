@@ -11,9 +11,17 @@ export function Header_Private() {
                 <div className="flex items-center justify-between h-16 px-4 gap-2">
                     <Link to="/"><img src={logo_rio_jr_branca} className="max-h-12 w-auto" /></Link>
 
-                    <Button asChild className="py-1.5 px-4 text-white text-lg font-medium bg-verde-claro hover:bg-verde-claro/70 rounded-xl active:scale-95 transition-all" size="sm">
-                        <Link to="/">Sair</Link>
-                    </Button>
+                    <div className='flex justify-evenly gap-6'>
+                        <Button asChild className="py-1.5 px-4 text-white text-lg font-medium bg-verde-claro hover:bg-verde-claro/70 rounded-xl active:scale-95 transition-all" size="sm">
+                            <Link to="/indicadores/cadastro">Relatório +</Link>
+                        </Button>
+
+                        <Button asChild className="py-1.5 px-4 text-white text-lg font-medium bg-verde-claro hover:bg-verde-claro/70 rounded-xl active:scale-95 transition-all" size="sm">
+                            <Link to="/">Sair</Link>
+                        </Button>
+                    </div>
+                    
+                   
                 </div>
             </header>
         </>
