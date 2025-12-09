@@ -1,15 +1,16 @@
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, } from "@/components/ui/navigation-menu"
 import { Popover, PopoverContent, PopoverTrigger, } from "@/components/ui/popover"
 import logo_rio_jr_branca from '@/assets/logo_rio_jr_branca.png'
-import { InfoIcon } from "lucide-react"
+import { InfoIcon, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 import "@/index.css"
+import { HashLink } from 'react-router-hash-link';
 
 const navigationLinks = [
   { to: "/", label: "Home" },
-  { to: "/", label: "Features" },
-  { to: "/", label: "Tutorial" }
+  { to: "/#sobre-api", label: "Sobre API" },
+  { to: "/#tutorial", label: "Tutorial" }
 ]
 
 export function Header_Public() {
@@ -37,12 +38,14 @@ export function Header_Public() {
                                         {navigationLinks.map((link) => (
                                             <NavigationMenuItem key={link.label} className="w-full">
                                                 <NavigationMenuLink asChild>
-                                                    <Link to={link.to} className="flex flex-row items-center block py-1.5 text-sm gap-2 p-2 hover:bg-white/10 rounded-md transition">
+                                                    <HashLink smooth to={link.to} className="flex flex-row items-center px-2 py-1.5 font-medium hover:scale-105 hover:bg-white/10 rounded-md transition-all duration-100">
                                                         {link.label === "Tutorial" && (
                                                             <InfoIcon className="w-4 h-4 text-white/80" />
+                                                        )}{link.label === "Sobre API" && (
+                                                            <FileText className="w-4 h-4 text-white/80" />
                                                         )}
                                                         {link.label}
-                                                    </Link>
+                                                    </HashLink>
                                                 </NavigationMenuLink>
                                             </NavigationMenuItem>
                                         ))}
@@ -60,12 +63,15 @@ export function Header_Public() {
                                 {navigationLinks.map((link) => (
                                     <NavigationMenuItem key={link.label} className="pl-5 relative">
                                         <NavigationMenuLink asChild>
-                                            <Link to={link.to} className="flex flex-row items-center px-2 py-1.5 font-medium hover:scale-105 hover:bg-white/10 rounded-md transition-all duration-100">
+                                            <HashLink smooth to={link.to} className="flex flex-row items-center block py-1.5 text-sm gap-2 p-2 hover:bg-white/10 rounded-md transition">
                                                 {link.label === "Tutorial" && (
                                                     <InfoIcon className="w-4 h-4 text-white/80" />
                                                 )}
+                                                {link.label === "Sobre API" && (
+                                                    <FileText className="w-4 h-4 text-white/80" />
+                                                )}
                                                 {link.label}
-                                            </Link>
+                                            </HashLink>
                                         </NavigationMenuLink>
                                     </NavigationMenuItem>
                                 ))}
