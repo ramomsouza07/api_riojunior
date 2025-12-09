@@ -73,14 +73,7 @@ export default function Register() {
 
             if (loginResponse.ok) {
                 localStorage.setItem("token", loginJson.token)
-                
-                if (loginJson.user && loginJson.user.id) {
-                    localStorage.setItem("empresaId", loginJson.user.id)
-                    navigate("/empresas")
-                } else {
-                    navigate("/empresas")
-                }
-            } else {
+            
                 alert("Conta criada com sucesso! Faça login para continuar.")
                 navigate("/login")
             }
