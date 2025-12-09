@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import Pesquisa from './pages/Pesquisa'
 import Ej_Pag from './pages/EJ_Pag'
 import Erro from './pages/Erro'
+import IndicadoresFormPage from './pages/IndicadoresForm'
 
 function RoutesApp() {
     return (
@@ -16,6 +17,7 @@ function RoutesApp() {
                 <Route path='/empresas' element={ <Pesquisa /> } />
                 <Route path='/empresas/:id' element={ <Ej_Pag/> }/>
                 <Route path="*" element={ <Erro/> } />
+                <Route path="/indicadores/cadastro" element={<IndicadoresFormPage/>} />
             </Routes>
         </BrowserRouter>
     )

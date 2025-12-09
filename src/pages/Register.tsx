@@ -76,7 +76,7 @@ export default function Register() {
                 
                 if (loginJson.user && loginJson.user.id) {
                     localStorage.setItem("empresaId", loginJson.user.id)
-                    navigate(`/profile/${loginJson.user.id}`)
+                    navigate("/empresas")
                 } else {
                     navigate("/empresas")
                 }

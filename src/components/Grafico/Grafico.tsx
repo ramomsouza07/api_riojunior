@@ -34,7 +34,7 @@ export function PerformanceChart({ regua, data }: GraficoProps) {
 
   return (
     <div className="w-full flex justify-center lg:justify-end">
-      <Card className="w-full max-w-[95%] md:max-w-full lg:max-w-[85%] xl:max-w-[80%] ">
+      <Card className="w-full shadow-lg border-none max-w-[95%] md:max-w-full lg:max-w-[85%] xl:max-w-[80%] ">
         <CardHeader className="pb-2 pt-4 px-4">
           <CardTitle className="text-lg">Índice de Cluster</CardTitle>
           <CardDescription className="text-xs">Desempenho da empresa nos últimos meses</CardDescription>
