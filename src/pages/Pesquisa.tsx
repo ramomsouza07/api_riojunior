@@ -8,6 +8,7 @@ import { CardEJ } from '@/components/CardEJ'
 import '@/index.css'
 
 interface EJprops {
+    id: string
     nome: string,
     logo: string,
     local: string,
@@ -107,6 +108,7 @@ export default function Pesquisa() {
                         <div className="flex flex-wrap justify-center gap-15 mt-5">
                             {EJsFiltradas.map((ej, index) => (
                             <CardEJ
+                                id={ej.id}
                                 key={index}
                                 nome={ej.nome}
                                 logo={ej.logo}
