@@ -4,7 +4,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Pesquisa from './pages/Pesquisa'
 import Ej_Pag from './pages/EJ_Pag'
-// import Erro from './pages/Erro'
+import Erro from './pages/Erro'
 
 function RoutesApp() {
     return (
@@ -15,12 +15,10 @@ function RoutesApp() {
                 <Route path="/registro" element={ <Register /> } />
                 <Route path='/empresas' element={ <Pesquisa /> } />
                 <Route path='/empresas/:id' element={ <Ej_Pag/> }/>
-                
+                <Route path="*" element={ <Erro/> } />
             </Routes>
         </BrowserRouter>
     )
 }
 
 export default RoutesApp
-
-// <Route path="*" element={ <Erro/> } />

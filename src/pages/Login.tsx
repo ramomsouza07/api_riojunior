@@ -49,7 +49,13 @@ export default function Login() {
                 }
 
                 localStorage.setItem("token", json.token)
-                navigate("/empresas")
+                
+                if (json.user && json.user.id) {
+                    localStorage.setItem("empresaId", json.user.id)
+                    navigate(`/profile/${json.user.id}`)
+                } else {
+                    navigate("/empresas") 
+                }
     
             } catch (err) {
                 console.log(err)
