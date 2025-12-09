@@ -8,7 +8,6 @@ import { CardEJ } from '@/components/CardEJ'
 import '@/index.css'
 
 interface EJprops {
-    id: string
     nome: string,
     logo: string,
     local: string,
@@ -66,11 +65,23 @@ export default function Pesquisa() {
         setFiltro(tipo)
     }
 
-    const EJsFiltradas = ejs.filter((ej) => {
-        const fBusca = ej.nome.toLowerCase().includes(busca.toLowerCase())
-        const fFiltro = filtro === "" || ej.tipo === filtro
+    const cidades = [...new Set(ejs.map(ej => ej.local))].filter(Boolean).sort()
 
-        return fBusca && fFiltro
+    const EJsFiltradas = ejs.filter((ej) => {
+        const termoBusca = busca.toLowerCase()
+        const matchBusca = ej.nome.toLowerCase().includes(termoBusca) || (ej.local && ej.local.toLowerCase().includes(termoBusca))
+
+        let matchFiltro = true
+
+        if (filtro === "todas") {
+            matchFiltro = true
+        } else if (filtro === "federadas") {
+            matchFiltro = ej.federada === true
+        } else {
+            matchFiltro = ej.local === filtro
+        }
+
+        return matchBusca && matchFiltro
     })
         
     return (
@@ -91,31 +102,40 @@ export default function Pesquisa() {
                                 <Search className='absolute top-3.5 right-3 h-5 w-5 text-verde-claro cursor-pointer' onClick={fazerBusca} />
                             </div>
                             <Field className="">
-                                <Select>
+                                <Select onValueChange={setFiltro} value={filtro}>
                                     <SelectTrigger id="filtro" className="bg-verde-claro border-none text-white">
                                         <SelectValue placeholder="Filtro" />
                                     </SelectTrigger>
                                     
                                     <SelectContent className="bg-verde-claro border-none text-white">
+                                        <SelectItem value="todas">Todas</SelectItem>
                                         <SelectItem value="federadas">Federadas</SelectItem>
-                                        <SelectItem value="cidade">Cidade</SelectItem>
-                                        <SelectItem value="etc">etc</SelectItem>
+
+                                        {cidades.map(cidade => (
+                                            <SelectItem key={String(cidade)} value={String(cidade)}>
+                                                {String(cidade)}
+                                            </SelectItem>
+                                        ))}
                                     </SelectContent>
+                                    
                                 </Select>
                             </Field>
                         </form>
 
                         <div className="flex flex-wrap justify-center gap-15 mt-5">
-                            {EJsFiltradas.map((ej, index) => (
-                            <CardEJ
-                                id={ej.id}
-                                key={index}
-                                nome={ej.nome}
-                                logo={ej.logo}
-                                local={ej.local}
-                                faculdade={ej.faculdade}
-                            />))}
-                            
+                            {EJsFiltradas.length > 0 ? (
+                                EJsFiltradas.map((ej, index) => (
+                                    <CardEJ
+                                        key={index}
+                                        nome={ej.nome}
+                                        logo={ej.logo}
+                                        local={ej.local}
+                                        faculdade={ej.faculdade}
+                                    />
+                                ))
+                            ) : (
+                                <p className="text-gray-500">Nenhuma empresa encontrada com esses filtros.</p>
+                            )}
                         </div>
 
                 </main>
