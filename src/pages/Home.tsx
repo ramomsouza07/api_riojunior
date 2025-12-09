@@ -122,6 +122,30 @@ export default function Home() {
 
                     </div>
                     )}
+                    <div className='flex flex-col gap-8 mt-14 text-azul-escuro font-semibold w-full max-w-2xl text-justify shrink-0'>
+                        <div className='flex flex-col gap-4'>
+                            <h2>Sobre a API</h2>
+                            <p>
+                            Esta plataforma foi desenvolvida para centralizar o acompanhamento estratégico das Empresas Juniores do Rio de Janeiro, promovendo maior transparência e controle de dados.
+                            </p>
+                            <p>
+                                Mensalmente, cada EJ deve reportar seus resultados na plataforma. Os indicadores monitorados incluem: <br></br>
+                                1. Faturamento<br></br>
+                                2. Faturamento Colaborativo<br></br>
+                                3. Índice Cluster<br></br>
+                                4. Engajamento com o MEJ<br></br>
+                                5. Índice de Satisfação (CSAT)
+                            </p>
+                        </div>
+                        <div className='flex flex-col gap-4'>
+                            <h2>Tutorial</h2>
+                            <p>Para realizar o lançamento mensal dos resultados da sua EJ na plataforma da RioJunior, certifique-se primeiramente de ter em mãos os dados consolidados do mês de referência, incluindo faturamento, índice cluster, CSAT e métricas de engajamento.</p>
+                            <p>Após efetuar o login, localize e clique no botão de ação para novos lançamentos no painel principal. Inicie o processo selecionando o mês e o ano correspondentes aos dados e, em seguida, preencha cada indicador com atenção, utilizando apenas números para valores monetários e pontos para separar casas decimais nos índices, se necessário. </p>
+                            <p>Antes de finalizar, revise todas as informações para garantir a precisão das métricas da rede e clique em enviar. O registro será processado e aparecerá automaticamente no histórico da sua dashboard; caso precise corrigir algum dado enviado, verifique a disponibilidade de edição ou contate o suporte da federação.</p>
+                        </div>
+                        <p>Para mais detalhes sobre a federação, visite <a target='_blank' className="text-azul-escuro font-medium hover:text-verde-claro hover:underline hover:decoration-solid transition" href="https://riojunior.com.br/">RioJunior</a>.</p>
+                    </div>
+
                 </main>
                 <Footer />
             </div>

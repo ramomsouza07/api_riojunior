@@ -3,7 +3,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, } from "
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Label } from "@radix-ui/react-label"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState, type FormEvent } from "react"
 import show from '@/assets/show.png'
 import hide from '@/assets/hide.png'
@@ -29,7 +29,8 @@ export default function Register() {
     const [federadaInput, setFederadaInput] = useState<boolean | null>(null)
 
     const ShowHide = () => setVisivel((prev) => !prev)
-
+    const navigate = useNavigate()
+    
     const handleRegister = async (e: FormEvent) => {
         e.preventDefault()
 
@@ -57,6 +58,31 @@ export default function Register() {
             if (!response.ok) {
                 alert("Erro ao registrar!")
                 return
+            }
+
+            const loginResponse = await fetch(`${API_BASE_URL}/login`, {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: emailInput,
+                    password: senhaInput
+                })
+            })
+
+            const loginJson = await loginResponse.json()
+
+            if (loginResponse.ok) {
+                localStorage.setItem("token", loginJson.token)
+                
+                if (loginJson.user && loginJson.user.id) {
+                    localStorage.setItem("empresaId", loginJson.user.id)
+                    navigate(`/profile/${loginJson.user.id}`)
+                } else {
+                    navigate("/empresas")
+                }
+            } else {
+                alert("Conta criada com sucesso! Faça login para continuar.")
+                navigate("/login")
             }
 
         } catch (err) {
