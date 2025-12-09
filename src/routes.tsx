@@ -14,7 +14,7 @@ function RoutesApp() {
                 <Route path="/login" element={ <Login/> } />
                 <Route path="/registro" element={ <Register /> } />
                 <Route path='/empresas' element={ <Pesquisa /> } />
-                <Route path='/teste' element={ <Ej_Pag/> }/>
+                <Route path='/empresas/:id' element={ <Ej_Pag/> }/>
                 
             </Routes>
         </BrowserRouter>
