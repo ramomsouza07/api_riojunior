@@ -73,7 +73,7 @@ export const createUser: FastifyPluginAsyncZod = async app => {
     })
 
     app.get("/user",{
-        preHandler: verificarAdmin,
+        preHandler: verificarAutenticacao,
         schema:{
             response: {
                 200: z.array(
